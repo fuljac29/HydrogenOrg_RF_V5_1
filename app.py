@@ -8,12 +8,8 @@ from reactor_animation import render_reactor
 
 st.set_page_config(page_title='HydrogenOrg | RF Research Lab', page_icon='⚗️', layout='wide')
 st.markdown('''<style>.stApp{background:#07131f;color:#e6eff6}section[data-testid="stSidebar"]{background:#102434}h1,h2,h3{color:#56dce5!important}div[data-testid="stMetric"]{background:#102a3b;padding:10px;border-radius:12px;border-top:2px solid #86d766}.stButton>button{border-color:#56cbd9}.block-container{padding-top:3.5rem}h1{font-size:2rem!important;margin-bottom:0!important}</style>''',unsafe_allow_html=True)
-# Direct site navigation also works when no browser history exists.
-st.markdown('''<style>
-.h2-site-return{position:fixed;right:18px;bottom:22px;z-index:99999;background:#102434;color:#56dce5!important;border:1px solid #56dce5;border-radius:8px;padding:11px 16px;font:600 14px Arial,sans-serif;text-decoration:none!important;box-shadow:0 3px 12px #0006}
-.h2-site-return:focus-visible{outline:3px solid #86d766;outline-offset:3px}
-.block-container{padding-bottom:6rem}
-</style><a class="h2-site-return" href="https://hydrogenorg.ch/" target="_self" aria-label="Back to HydrogenOrg website">&#8592; Back to HydrogenOrg</a>''',unsafe_allow_html=True)
+st.link_button('← Back to HydrogenOrg', 'https://hydrogenorg.ch/', type='primary', help='Opens the website in a new tab and keeps this simulation available.')
+st.caption('Navigation update · NAV-02')
 st.title('HydrogenOrg · RF Research Lab')
 st.caption('Research simulation · Uncalibrated assumptions · Not measured reactor performance')
 if 'base' not in st.session_state: st.session_state.base=asdict(Inputs())
@@ -27,6 +23,7 @@ GROUPS=[('AC / RF power',[
  ('Heat and auxiliary loads',[('steam_kwh_kg','Steam preparation duty (kWh/kg water)',.05),('heater_eff','Electric heater efficiency',.01),('recoverable_fraction','Recoverable residual heat fraction',.01),('exchanger_eff','Heat recovery efficiency',.01),('auxiliary_kw','Other auxiliary loads (kW)',.1),('separation_kwh_kg','Separation/compression (kWh/kg net H₂)',.1)]),
  ('Operating costs',[('hours_day','Operating hours per day',1.),('electricity_chf_kwh','Electricity (CHF/kWh)',.01),('ar_chf_nm3','Make-up argon (CHF/Nm³)',.1),('water_chf_m3','Make-up water (CHF/m³)',.1),('fixed_chf_day','Other included costs (CHF/day)',10.)])]
 with st.sidebar:
+ st.link_button('← Back to HydrogenOrg', 'https://hydrogenorg.ch/', help='Opens the website in a new tab.')
  st.header('Configure your scenario')
  with st.expander('Import / reset'):
   uploaded=st.file_uploader('Scenario JSON (V5.1 RF)',type=['json'])
